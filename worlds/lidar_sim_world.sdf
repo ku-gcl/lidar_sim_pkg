@@ -1,0 +1,40 @@
+<?xml version="1.0" ?>
+<sdf version="1.8">
+  <world name="lidar_sim_world">
+    <!-- センサーシステムプラグイン -->
+    <plugin filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors"/>
+
+    <!-- 固定モデル＋LiDARリンク -->
+    <model name="lidar_robot">
+      <static>true</static>
+      <link name="base_link"/>
+      <link name="laser_link">
+        <pose>0 0 0.1 0 0 0</pose>
+        <sensor name="mid360" type="gpu_lidar">
+          <pose>0 0 0 0 0 0</pose>
+          <update_rate>10</update_rate>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>720</samples>
+                <min_angle>-3.14159</min_angle>
+                <max_angle> 3.14159</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>40</samples>
+                <min_angle>0</min_angle>
+                <max_angle>0.9774</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>40.0</max>
+            </range>
+          </ray>
+          <visualize>true</visualize>
+        </sensor>
+      </link>
+    </model>
+  </world>
+</sdf>
