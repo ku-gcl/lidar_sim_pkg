@@ -1,19 +1,33 @@
+# simulation.launch.py
 import os
 from launch import LaunchDescription
-from launch_ros.actions import Node
-from ament_index_python.packages import get_package_share_directory
+from launch.actions import SetEnvironmentVariable, IncludeLaunchDescription
+from launch.launch_description_sources import PythonLaunchDescriptionSource
+from launch.substitutions import PathJoinSubstitution
+from launch_ros.substitutions import FindPackageShare
+
 
 def generate_launch_description():
-    pkg_share = get_package_share_directory('lidar_sim_pkg')
-    world_path = os.path.join(pkg_share, 'worlds', 'lidar_sim_world.sdf')
+    # パッケージ共有ディレクトリを参照
+    pkg_share = FindPackageShare('lidar_sim_pkg')
+    ros_gz_sim_share = FindPackageShare('ros_gz_sim')
+
+    # ワールドファイルとモデルディレクトリのパス
+    world_file = PathJoinSubstitution([pkg_share, 'worlds', 'lidar_sim_world.sdf'])
+    resource_path = PathJoinSubstitution([pkg_share, 'models'])
+
     return LaunchDescription([
-        Node(
-            package='ros_gz_sim',
-            executable='gzserver',
-            arguments=[world_path],
-            output='screen'),
-        Node(
-            package='ros_gz_sim',
-            executable='gzclient',
-            output='screen'),
+        # Gazebo のリソースパスにモデルを追加
+        SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', resource_path),
+
+        # ros_gz_sim の汎用 launch を利用して Gazebo 起動
+        IncludeLaunchDescription(
+            PythonLaunchDescriptionSource(
+                PathJoinSubstitution([ros_gz_sim_share, 'launch', 'gz_sim.launch.py'])
+            ),
+            launch_arguments={
+                'gz_args': world_file,
+                'on_exit_shutdown': 'True'
+            }.items(),
+        ),
     ])
