@@ -11,14 +11,17 @@ def generate_launch_description():
     # パッケージ共有ディレクトリを参照
     pkg_share = FindPackageShare('lidar_sim_pkg')
     ros_gz_sim_share = FindPackageShare('ros_gz_sim')
+    # print(ros_gz_sim_share)
 
     # ワールドファイルとモデルディレクトリのパス
-    world_file = PathJoinSubstitution([pkg_share, 'worlds', 'lidar_sim_world.sdf'])
+    # world_file = PathJoinSubstitution([pkg_share, 'worlds', 'lidar_sim_world.sdf'])
+    world_file = PathJoinSubstitution([pkg_share, 'worlds', 'default.sdf'])
     resource_path = PathJoinSubstitution([pkg_share, 'models'])
 
     return LaunchDescription([
         # Gazebo のリソースパスにモデルを追加
-        SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', resource_path),
+        # SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', resource_path),
+        SetEnvironmentVariable('IGN_GAZEBO_RESOURCE_PATH', resource_path),
 
         # ros_gz_sim の汎用 launch を利用して Gazebo 起動
         IncludeLaunchDescription(

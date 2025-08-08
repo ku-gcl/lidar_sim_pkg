@@ -90,6 +90,14 @@
 
     <!-- 固定モデル＋LiDARリンク -->
     <model name="lidar_robot">
+      <pose>0 0 0.5 0 0 0</pose>
+      <link name="link">
+        <inertial><mass>1</mass></inertial>
+        <collision name="col"><geometry><box><size>1 1 1</size></box></geometry></collision>
+        <visual name="vis"><geometry><box><size>1 1 1</size></box></geometry></visual>
+      </link>
+    <!-- </model> -->
+    <!-- <model name="lidar_robot">
       <static>true</static>
       <link name="base_link">
         <visual name="base_visual">
@@ -98,7 +106,7 @@
           </geometry>
           <material><ambient>0.5 0.5 0.5 1.0</ambient></material>
         </visual>
-      </link>
+      </link> -->
       <link name="laser_link">
         <pose>0 0 0.1 0 0 0</pose>
         <sensor name="mid360" type="gpu_lidar">
