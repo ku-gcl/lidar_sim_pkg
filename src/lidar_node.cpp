@@ -39,7 +39,7 @@ void cb(const ignition::msgs::LaserScan &_msg) {
         data.mutable_angular()->set_z(0.0);
     } else {
         data.mutable_linear()->set_x(0.0);
-        data.mutable_angular()->set_z(0.5);
+        data.mutable_angular()->set_z(-0.5);
     }
     pub.Publish(data);
 }

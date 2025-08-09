@@ -365,8 +365,8 @@
                     <visualize>true</visualize>
                     <topic>imu</topic>
                 </sensor>
-                <sensor name='gpu_lidar' type='gpu_lidar'>"
-                    <pose relative_to='lidar_frame'>0 0 0 0 0 0</pose>
+                <sensor name='gpu_lidar' type='gpu_lidar'>
+                    <pose relative_to='lidar_frame'>0 0 0.2 0 0 0</pose>
                     <topic>lidar</topic>
                     <update_rate>10</update_rate>
                     <ray>
@@ -374,14 +374,14 @@
                             <horizontal>
                                 <samples>640</samples>
                                 <resolution>1</resolution>
-                                <min_angle>-${PI/2}</min_angle>
-                                <max_angle>${PI/2}</max_angle>
+                                <min_angle>-3.141592</min_angle>
+                                <max_angle> 3.141592</max_angle>
                             </horizontal>
                             <vertical>
                                 <samples>1</samples>
                                 <resolution>0.01</resolution>
-                                <min_angle>-${15.0*PI/180.0}</min_angle>
-                                <max_angle> ${15.0*PI/180.0}</max_angle>
+                                <min_angle>-0.2617993878</min_angle>
+                                <max_angle> 0.2617993878</max_angle>
                             </vertical>
                         </scan>
                         <range>
@@ -395,7 +395,7 @@
                             <stddev>0.01</stddev>
                         </noise>
                     </ray>
-                    <alwaysOn>1</alwaysOn>
+                    <always_on>1</always_on>
                     <visualize>true</visualize>
                 </sensor>
             </link>
