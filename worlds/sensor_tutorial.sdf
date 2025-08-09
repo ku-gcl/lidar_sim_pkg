@@ -102,7 +102,7 @@
             <ixx>0.12</ixx>
             <ixy>0</ixy>
             <ixz>0</ixz>
-            <iyy>0</iyy>
+            <iyy>0.41</iyy>
             <iyz>0</iyz>
             <izz>0.48</izz>
           </inertia>
