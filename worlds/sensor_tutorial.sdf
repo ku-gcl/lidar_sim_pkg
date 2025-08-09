@@ -276,9 +276,7 @@
             <!-- KeyPublisher plugin-->
             <plugin filename="KeyPublisher" name="Key Publisher"/>
 
-            <plugin filename="VisualizeLidar" name="Visualize Lidar">
-                <topic>/lidar</topic>
-            </plugin>
+            <plugin filename="VisualizeLidar" name="Visualize Lidar"/>
         </gui>
 
         <light type="directional" name="sun">
