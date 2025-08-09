@@ -9,8 +9,11 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
-find_package(ros_gz_sim REQUIRED)
-find_package(ros_gz_bridge REQUIRED)
+# find_package(ros_gz_sim REQUIRED)
+# find_package(ros_gz_bridge REQUIRED)
+find_package(ignition-transport11 QUIET REQUIRED OPTIONAL_COMPONENTS log)
+set(IGN_TRSNSPORT_VER ${ignition-transport11_VERSION_MAJOR})
+find_package(ignition-msgs8 QUIET)
 
 add_executable(lidar_node src/lidar_node.cpp)
 target_include_directories(lidar_node PUBLIC
@@ -21,6 +24,10 @@ ament_target_dependencies(
   lidar_node
   "rclcpp"
   "std_msgs"
+)
+target_link_libraries(lidar_node
+  ignition-transport${IGN_TRSNSPORT_VER}::core
+  ignition-msgs8::ignition-msgs8
 )
 
 install(TARGETS lidar_node
