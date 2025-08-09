@@ -32,3 +32,9 @@ ros2 launch lidar_sim_pkg simulation.launch.py
 ign topic -l                # see topic list
 ign topic -e -t /lidar      # echo /lidar topic data
 ```
+
+
+## Reference
+- [Gazebo sensors tutorial](https://gazebosim.org/docs/fortress/sensors/)
+- [Gazebo sensors tutorial code](https://github.com/gazebosim/docs/tree/master/fortress/tutorials/sensors)
+- [ros_gz](https://github.com/gazebosim/ros_gz?tab=readme-ov-file)
