@@ -12,18 +12,18 @@ find_package(std_msgs REQUIRED)
 find_package(ros_gz_sim REQUIRED)
 find_package(ros_gz_bridge REQUIRED)
 
-add_executable(lidar_sim src/lidar_sim.cpp)
-target_include_directories(lidar_sim PUBLIC
+add_executable(lidar_node src/lidar_node.cpp)
+target_include_directories(lidar_node PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
-target_compile_features(lidar_sim PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
+target_compile_features(lidar_node PUBLIC c_std_99 cxx_std_17)  # Require C99 and C++17
 ament_target_dependencies(
-  lidar_sim
+  lidar_node
   "rclcpp"
   "std_msgs"
 )
 
-install(TARGETS lidar_sim
+install(TARGETS lidar_node
   DESTINATION lib/${PROJECT_NAME})
 
 install(
