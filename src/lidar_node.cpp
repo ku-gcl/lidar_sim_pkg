@@ -25,7 +25,7 @@ std::string topic_pub = "/cmd_vel";
 ignition::transport::Node node;
 auto pub = node.Advertise<ignition::msgs::Twist>(topic_pub);
 
-void cb(const ignition::msgs::LaserScan &msg) {
+void cb(const ignition::msgs::LaserScan &_msg) {
     ignition::msgs::Twist data;
     bool allMore = true;
     for (int i = 0; i < _msg.ranges_size(); i++) {
