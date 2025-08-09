@@ -276,6 +276,7 @@
             <!-- KeyPublisher plugin-->
             <plugin filename="KeyPublisher" name="Key Publisher"/>
 
+            <plugin filename="VisualizeLidar" name="Visualize Lidar"/>
         </gui>
 
         <light type="directional" name="sun">
@@ -655,7 +656,6 @@
                 <enabled>true</enabled>
             </plugin>
         </model>
-
 
         <model name='wall_3'>
             <static>true</static>
