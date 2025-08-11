@@ -57,9 +57,7 @@
             </gz-gui>
             </plugin> -->
 
-            <plugin filename="VisualizeLidar" name="Visualize Lidar">
-                <topic>lidar</topic>
-            </plugin>
+            <plugin filename="VisualizeLidar" name="Visualize Lidar"/>
 
             <!-- World control -->
             <plugin filename="WorldControl" name="World control">
@@ -407,7 +405,7 @@
                             <stddev>0.02</stddev>
                         </noise>
                     </ray>
-                    <always_on>1</always_on>
+                    <always_on>true</always_on>
                     <visualize>true</visualize>
                 </sensor>
             </link>
