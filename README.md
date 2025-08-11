@@ -3,6 +3,11 @@
 - ROS 2 Humble
 - Gazebo Fortress (ignition)
 
+
+## YouTube Video
+[![YouTube](doc/img/thumbnail.png)](https://youtu.be/BaE7Gy0TvX8)
+
+
 ## How to use
 ### Clone and build
 
