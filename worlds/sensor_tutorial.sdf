@@ -48,85 +48,17 @@
             </plugin>
 
             <!-- Plugins that add functionality to the scene -->
-            <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+            <!-- <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
             <gz-gui>
                 <property key="state" type="string">floating</property>
                 <property key="width" type="double">5</property>
                 <property key="height" type="double">5</property>
                 <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
-            <plugin filename="GzSceneManager" name="Scene Manager">
-            <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
-            </plugin>
-            <plugin filename="InteractiveViewControl" name="Interactive view control">
-            <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
-            </plugin>
-            <plugin filename="CameraTracking" name="Camera Tracking">
-            <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
-            </plugin>
-            <plugin filename="MarkerManager" name="Marker manager">
-            <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
-            </plugin>
-            <plugin filename="SelectEntities" name="Select Entities">
-            <gz-gui>
-                <anchors target="Select entities">
-                <line own="right" target="right"/>
-                <line own="top" target="top"/>
-                </anchors>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
-            </plugin>
-            <plugin filename="VisualizationCapabilities" name="Visualization Capabilities">
-            <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
-            </plugin>
+            </plugin> -->
 
-            <plugin filename="Spawn" name="Spawn Entities">
-            <gz-gui>
-                <anchors target="Select entities">
-                <line own="right" target="right"/>
-                <line own="top" target="top"/>
-                </anchors>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
+            <plugin filename="VisualizeLidar" name="Visualize Lidar">
+                <topic>lidar</topic>
             </plugin>
 
             <!-- World control -->
@@ -151,6 +83,84 @@
             <start_paused>true</start_paused>
             <use_event>true</use_event>
 
+            </plugin>
+
+            <plugin filename="GzSceneManager" name="Scene Manager">
+            <gz-gui>
+                <property key="resizable" type="bool">false</property>
+                <property key="width" type="double">5</property>
+                <property key="height" type="double">5</property>
+                <property key="state" type="string">floating</property>
+                <property key="showTitleBar" type="bool">false</property>
+            </gz-gui>
+            </plugin>
+
+            <plugin filename="InteractiveViewControl" name="Interactive view control">
+            <gz-gui>
+                <property key="resizable" type="bool">false</property>
+                <property key="width" type="double">5</property>
+                <property key="height" type="double">5</property>
+                <property key="state" type="string">floating</property>
+                <property key="showTitleBar" type="bool">false</property>
+            </gz-gui>
+            </plugin>
+
+            <plugin filename="CameraTracking" name="Camera Tracking">
+            <gz-gui>
+                <property key="resizable" type="bool">false</property>
+                <property key="width" type="double">5</property>
+                <property key="height" type="double">5</property>
+                <property key="state" type="string">floating</property>
+                <property key="showTitleBar" type="bool">false</property>
+            </gz-gui>
+            </plugin>
+
+            <plugin filename="MarkerManager" name="Marker manager">
+            <gz-gui>
+                <property key="resizable" type="bool">false</property>
+                <property key="width" type="double">5</property>
+                <property key="height" type="double">5</property>
+                <property key="state" type="string">floating</property>
+                <property key="showTitleBar" type="bool">false</property>
+            </gz-gui>
+            </plugin>
+
+            <plugin filename="SelectEntities" name="Select Entities">
+            <gz-gui>
+                <anchors target="Select entities">
+                <line own="right" target="right"/>
+                <line own="top" target="top"/>
+                </anchors>
+                <property key="resizable" type="bool">false</property>
+                <property key="width" type="double">5</property>
+                <property key="height" type="double">5</property>
+                <property key="state" type="string">floating</property>
+                <property key="showTitleBar" type="bool">false</property>
+            </gz-gui>
+            </plugin>
+
+            <plugin filename="VisualizationCapabilities" name="Visualization Capabilities">
+            <gz-gui>
+                <property key="resizable" type="bool">false</property>
+                <property key="width" type="double">5</property>
+                <property key="height" type="double">5</property>
+                <property key="state" type="string">floating</property>
+                <property key="showTitleBar" type="bool">false</property>
+            </gz-gui>
+            </plugin>
+
+            <plugin filename="Spawn" name="Spawn Entities">
+            <gz-gui>
+                <anchors target="Select entities">
+                <line own="right" target="right"/>
+                <line own="top" target="top"/>
+                </anchors>
+                <property key="resizable" type="bool">false</property>
+                <property key="width" type="double">5</property>
+                <property key="height" type="double">5</property>
+                <property key="state" type="string">floating</property>
+                <property key="showTitleBar" type="bool">false</property>
+            </gz-gui>
             </plugin>
 
             <!-- World statistics -->
@@ -276,7 +286,6 @@
             <!-- KeyPublisher plugin-->
             <plugin filename="KeyPublisher" name="Key Publisher"/>
 
-            <plugin filename="VisualizeLidar" name="Visualize Lidar"/>
         </gui>
 
         <light type="directional" name="sun">
