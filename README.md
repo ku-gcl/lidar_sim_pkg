@@ -41,7 +41,7 @@ cd ~/ws_lidar
 export GZ_VERSION=harmonic && colcon build --symlink-install
 ```
 
-### Run
+## Run
 
 ```bash
 echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
@@ -52,6 +52,13 @@ source ~/.bashrc
 Then, run your gazebo simulation. 
 After run gazebo simulation, execute command below
 
+### simulation
+```bash
+ros2 launch lidar_sim_pkg simulation.launch.py
+```
+
+## Mid-360 
+
 ```bash
 ros2 launch lidar_sim_pkg pc2_bridge.launch.py
 ```
@@ -60,6 +67,7 @@ ros2 launch lidar_sim_pkg pc2_bridge.launch.py
 gz topic -t /world/helipad_lidar/model/wrscopter_lidar_0/link/mid360_link/sensor/lidar/scan/points --info
 ros2 run ros_gz_bridge parameter_bridge /world/helipad_lidar/model/wrscopter_lidar_0/link/mid360_link/sensor/lidar/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked
 ```
+
 
 
 
