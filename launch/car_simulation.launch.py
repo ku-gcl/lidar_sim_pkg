@@ -31,16 +31,33 @@ def generate_launch_description():
         output="screen",
     )
     
-    gz_topic = '/lidar/points'
-    ros_bridge = Node(
+    gz_lidar_topic = '/lidar/points'
+    lidar_bridge = Node(
         package='ros_gz_bridge',
         executable='parameter_bridge',
         name='ros_gz_bridge',
-        arguments=[
-            # Gazebo -> ROS 2
-            f'{gz_topic}@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked'
-        ],
-        remappings=[(gz_topic, "/livox/lidar")],
+        arguments=[f'{gz_lidar_topic}@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked'],
+        remappings=[(gz_lidar_topic, "/livox/lidar")],
+        output='screen',
+    )
+
+    gz_imu_topic = '/imu'
+    imu_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='ros_gz_bridge',
+        arguments=[f'{gz_imu_topic}@sensor_msgs/msg/Imu[gz.msgs.IMU'],
+        remappings=[(gz_imu_topic, "/livox/imu")],
+        output='screen',
+    )
+
+    gz_odom_topic = '/model/vehicle_blue/odometry'
+    odom_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='ros_gz_bridge',
+        arguments=[f'{gz_odom_topic}@nav_msgs/msg/Odometry[gz.msgs.Odometry'],
+        remappings=[(gz_odom_topic, "/odom")],
         output='screen',
     )
     
@@ -57,6 +74,8 @@ def generate_launch_description():
         set_res_path, 
         gz_sim, 
         lidar_node,
-        ros_bridge,
+        lidar_bridge,
+        imu_bridge,
+        odom_bridge,
         # tf2_ros,
     ])
