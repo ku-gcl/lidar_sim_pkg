@@ -25,6 +25,7 @@ find_package(rclpy REQUIRED)
 # Find the Gazebo_Transport library
 find_package(gz-transport13 QUIET REQUIRED OPTIONAL_COMPONENTS log)
 set(GZ_TRANSPORT_VER ${gz-transport13_VERSION_MAJOR})
+find_package(gz-msgs10 REQUIRED)
 
 add_executable(lidar_node src/lidar_node.cpp)
 
@@ -40,7 +41,7 @@ ament_target_dependencies(
 )
 
 target_link_libraries(lidar_node
-  gz-transport${IGN_TRANSPORT_VER}::core
+  gz-transport${GZ_TRANSPORT_VER}::core
 )
 
 install(TARGETS lidar_node
