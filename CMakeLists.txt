@@ -48,7 +48,7 @@ install(TARGETS lidar_node
   DESTINATION lib/${PROJECT_NAME})
 
 install(
-  DIRECTORY worlds models launch
+  DIRECTORY worlds models launch rviz
   DESTINATION share/${PROJECT_NAME}
 )
 

@@ -1,9 +1,17 @@
-# simulation.launch.py
+import os
+
 from launch import LaunchDescription
 from launch.actions import ExecuteProcess, SetEnvironmentVariable
 from launch.substitutions import PathJoinSubstitution
 from launch_ros.actions import Node
 from launch_ros.substitutions import FindPackageShare
+
+
+################### user configure parameters for ros2 start ###################
+cur_path = os.path.split(os.path.realpath(__file__))[0] + '/'
+rviz_config_path_ = cur_path + '../rviz'
+rviz_config_path = os.path.join(rviz_config_path_, 'car_simulation.rviz')
+################### user configure parameters for ros2 end #####################
 
 
 def generate_launch_description():
@@ -69,6 +77,14 @@ def generate_launch_description():
         arguments=[f'{gz_tf_topic}@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'],
         remappings=[(gz_tf_topic, "/tf")],
         output='screen',
+    )
+    
+    rviz = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz_viewer',
+        output='screen',
+        arguments=['--display-config', rviz_config_path]
     )
     
     # tf2_ros = Node(
