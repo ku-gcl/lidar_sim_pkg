@@ -40,7 +40,7 @@ ament_target_dependencies(
 )
 
 target_link_libraries(lidar_node
-  gz-transport${IGN_TRSNSPORT_VER}::core
+  gz-transport${IGN_TRANSPORT_VER}::core
 )
 
 install(TARGETS lidar_node
