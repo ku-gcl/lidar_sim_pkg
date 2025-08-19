@@ -9,6 +9,12 @@
 
 
 ## How to use
+### Install ros_gz
+
+```bash
+sudo apt install -y ros-humble-ros-gz
+```
+
 ### Clone and build
 
 ```bash
