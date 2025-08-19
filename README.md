@@ -29,7 +29,7 @@ rosdep install -r --from-paths src -i -y --rosdistro humble
 # Build and install into workspace
 source /opt/ros/humble/setup.bash
 cd ~/ws_lidar
-colcon build --symlink-install
+export GZ_VERSION=harmonic && colcon build --symlink-install
 ```
 
 ### Bridge gz gpu_lidar to ROS 2
