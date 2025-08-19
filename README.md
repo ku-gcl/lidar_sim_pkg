@@ -54,7 +54,7 @@ After run gazebo simulation, execute command below
 
 ### simulation
 ```bash
-ros2 launch lidar_sim_pkg simulation.launch.py
+ros2 launch lidar_sim_pkg car_simulation.launch.py
 ```
 
 ## Mid-360 
