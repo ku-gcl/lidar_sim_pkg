@@ -6,34 +6,38 @@
             <real_time_factor>1.0</real_time_factor>
         </physics>
         <plugin
-            filename="ignition-gazebo-physics-system"
-            name="ignition::gazebo::systems::Physics">
+            filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics">
         </plugin>
         <plugin
-            filename="ignition-gazebo-user-commands-system"
-            name="ignition::gazebo::systems::UserCommands">
+            filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands">
         </plugin>
         <plugin
-            filename="ignition-gazebo-scene-broadcaster-system"
-            name="ignition::gazebo::systems::SceneBroadcaster">
+            filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster">
         </plugin>
-        <plugin filename="ignition-gazebo-imu-system"
-                name="ignition::gazebo::systems::Imu">
+        <plugin
+            filename="gz-sim-imu-system"
+            name="gz::sim::systems::Imu">
         </plugin>
-        <plugin filename="ignition-gazebo-sensors-system"
-                name="ignition::gazebo::systems::Sensors">
+        <plugin
+            filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors">
             <render_engine>ogre2</render_engine>
         </plugin>
-        <plugin filename="ignition-gazebo-contact-system"
-                name="ignition::gazebo::systems::Contact">
+        <plugin
+            filename="gz-sim-contact-system"
+            name="gz::sim::systems::Contact">
         </plugin>
         <gui fullscreen="0">
-            <!-- 3D scene -->
-            <plugin filename="MinimalScene" name="3D View">
+
+          <!-- 3D scene -->
+          <plugin filename="MinimalScene" name="3D View">
             <gz-gui>
-                <title>3D View</title>
-                <property type="bool" key="showTitleBar">false</property>
-                <property type="string" key="state">docked</property>
+              <title>3D View</title>
+              <property type="bool" key="showTitleBar">false</property>
+              <property type="string" key="state">docked</property>
             </gz-gui>
 
             <engine>ogre2</engine>
@@ -42,38 +46,28 @@
             <background_color>0.8 0.8 0.8</background_color>
             <camera_pose>-6 0 6 0 0.5 0</camera_pose>
             <camera_clip>
-                <near>0.25</near>
-                <far>25000</far>
+              <near>0.25</near>
+              <far>25000</far>
             </camera_clip>
-            </plugin>
+          </plugin>
 
-            <!-- Plugins that add functionality to the scene -->
-            <!-- <plugin filename="EntityContextMenuPlugin" name="Entity context menu">
+          <plugin filename="VisualizeLidar" name="Visualize Lidar"/>
+
+                    <!-- World control -->
+          <plugin filename="WorldControl" name="World control">
             <gz-gui>
-                <property key="state" type="string">floating</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="showTitleBar" type="bool">false</property>
-            </gz-gui>
-            </plugin> -->
+              <title>World control</title>
+              <property type="bool" key="showTitleBar">false</property>
+              <property type="bool" key="resizable">false</property>
+              <property type="double" key="height">72</property>
+              <property type="double" key="width">121</property>
+              <property type="double" key="z">1</property>
 
-            <plugin filename="VisualizeLidar" name="Visualize Lidar"/>
-
-            <!-- World control -->
-            <plugin filename="WorldControl" name="World control">
-            <gz-gui>
-                <title>World control</title>
-                <property type="bool" key="showTitleBar">false</property>
-                <property type="bool" key="resizable">false</property>
-                <property type="double" key="height">72</property>
-                <property type="double" key="width">121</property>
-                <property type="double" key="z">1</property>
-
-                <property type="string" key="state">floating</property>
-                <anchors target="3D View">
+              <property type="string" key="state">floating</property>
+              <anchors target="3D View">
                 <line own="left" target="left"/>
                 <line own="bottom" target="bottom"/>
-                </anchors>
+              </anchors>
             </gz-gui>
 
             <play_pause>true</play_pause>
@@ -81,205 +75,200 @@
             <start_paused>true</start_paused>
             <use_event>true</use_event>
 
-            </plugin>
+          </plugin>
 
-            <plugin filename="GzSceneManager" name="Scene Manager">
+          <plugin filename="GzSceneManager" name="Scene Manager">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="width" type="double">5</property>
+              <property key="height" type="double">5</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
-
-            <plugin filename="InteractiveViewControl" name="Interactive view control">
+          </plugin>
+          <plugin filename="InteractiveViewControl" name="Interactive view control">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="width" type="double">5</property>
+              <property key="height" type="double">5</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
-
-            <plugin filename="CameraTracking" name="Camera Tracking">
+          </plugin>
+          <plugin filename="CameraTracking" name="Camera Tracking">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="width" type="double">5</property>
+              <property key="height" type="double">5</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
-
-            <plugin filename="MarkerManager" name="Marker manager">
+          </plugin>
+          <plugin filename="MarkerManager" name="Marker manager">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="width" type="double">5</property>
+              <property key="height" type="double">5</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
-
-            <plugin filename="SelectEntities" name="Select Entities">
+          </plugin>
+          <plugin filename="SelectEntities" name="Select Entities">
             <gz-gui>
-                <anchors target="Select entities">
+              <anchors target="Select entities">
                 <line own="right" target="right"/>
                 <line own="top" target="top"/>
-                </anchors>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
+              </anchors>
+              <property key="resizable" type="bool">false</property>
+              <property key="width" type="double">5</property>
+              <property key="height" type="double">5</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
-
-            <plugin filename="VisualizationCapabilities" name="Visualization Capabilities">
+          </plugin>
+          <plugin filename="VisualizationCapabilities" name="Visualization Capabilities">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="width" type="double">5</property>
+              <property key="height" type="double">5</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <plugin filename="Spawn" name="Spawn Entities">
+          <plugin filename="Spawn" name="Spawn Entities">
             <gz-gui>
-                <anchors target="Select entities">
+              <anchors target="Select entities">
                 <line own="right" target="right"/>
                 <line own="top" target="top"/>
-                </anchors>
-                <property key="resizable" type="bool">false</property>
-                <property key="width" type="double">5</property>
-                <property key="height" type="double">5</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
+              </anchors>
+              <property key="resizable" type="bool">false</property>
+              <property key="width" type="double">5</property>
+              <property key="height" type="double">5</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <!-- World statistics -->
-            <plugin filename="WorldStats" name="World stats">
+          <!-- World statistics -->
+          <plugin filename="WorldStats" name="World stats">
             <gz-gui>
-                <title>World stats</title>
-                <property type="bool" key="showTitleBar">false</property>
-                <property type="bool" key="resizable">false</property>
-                <property type="double" key="height">110</property>
-                <property type="double" key="width">290</property>
-                <property type="double" key="z">1</property>
+              <title>World stats</title>
+              <property type="bool" key="showTitleBar">false</property>
+              <property type="bool" key="resizable">false</property>
+              <property type="double" key="height">110</property>
+              <property type="double" key="width">290</property>
+              <property type="double" key="z">1</property>
 
-                <property type="string" key="state">floating</property>
-                <anchors target="3D View">
+              <property type="string" key="state">floating</property>
+              <anchors target="3D View">
                 <line own="right" target="right"/>
                 <line own="bottom" target="bottom"/>
-                </anchors>
+              </anchors>
             </gz-gui>
 
             <sim_time>true</sim_time>
             <real_time>true</real_time>
             <real_time_factor>true</real_time_factor>
             <iterations>true</iterations>
-            </plugin>
+          </plugin>
 
-            <!-- Insert simple shapes -->
-            <plugin filename="Shapes" name="Shapes">
+          <!-- Insert simple shapes -->
+          <plugin filename="Shapes" name="Shapes">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="x" type="double">0</property>
-                <property key="y" type="double">0</property>
-                <property key="width" type="double">250</property>
-                <property key="height" type="double">50</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-                <property key="cardBackground" type="string">#666666</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="x" type="double">0</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">250</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
+              <property key="cardBackground" type="string">#666666</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <!-- Insert lights -->
-            <plugin filename="Lights" name="Lights">
+          <!-- Insert lights -->
+          <plugin filename="Lights" name="Lights">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="x" type="double">250</property>
-                <property key="y" type="double">0</property>
-                <property key="width" type="double">150</property>
-                <property key="height" type="double">50</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-                <property key="cardBackground" type="string">#666666</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="x" type="double">250</property>
+              <property key="y" type="double">0</property>
+              <property key="width" type="double">150</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
+              <property key="cardBackground" type="string">#666666</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <!-- Translate / rotate -->
-            <plugin filename="TransformControl" name="Transform control">
+          <!-- Translate / rotate -->
+          <plugin filename="TransformControl" name="Transform control">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="x" type="double">0</property>
-                <property key="y" type="double">50</property>
-                <property key="width" type="double">250</property>
-                <property key="height" type="double">50</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-                <property key="cardBackground" type="string">#777777</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="x" type="double">0</property>
+              <property key="y" type="double">50</property>
+              <property key="width" type="double">250</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
+              <property key="cardBackground" type="string">#777777</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <!-- Screenshot -->
-            <plugin filename="Screenshot" name="Screenshot">
+          <!-- Screenshot -->
+          <plugin filename="Screenshot" name="Screenshot">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="x" type="double">250</property>
-                <property key="y" type="double">50</property>
-                <property key="width" type="double">50</property>
-                <property key="height" type="double">50</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-                <property key="cardBackground" type="string">#777777</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="x" type="double">250</property>
+              <property key="y" type="double">50</property>
+              <property key="width" type="double">50</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
+              <property key="cardBackground" type="string">#777777</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <!-- Video recorder -->
-            <plugin filename="VideoRecorder" name="VideoRecorder">
+          <!-- Video recorder -->
+          <plugin filename="VideoRecorder" name="VideoRecorder">
             <gz-gui>
-                <property key="resizable" type="bool">false</property>
-                <property key="x" type="double">300</property>
-                <property key="y" type="double">50</property>
-                <property key="width" type="double">50</property>
-                <property key="height" type="double">50</property>
-                <property key="state" type="string">floating</property>
-                <property key="showTitleBar" type="bool">false</property>
-                <property key="cardBackground" type="string">#777777</property>
+              <property key="resizable" type="bool">false</property>
+              <property key="x" type="double">300</property>
+              <property key="y" type="double">50</property>
+              <property key="width" type="double">50</property>
+              <property key="height" type="double">50</property>
+              <property key="state" type="string">floating</property>
+              <property key="showTitleBar" type="bool">false</property>
+              <property key="cardBackground" type="string">#777777</property>
             </gz-gui>
 
             <record_video>
-                <use_sim_time>true</use_sim_time>
-                <lockstep>false</lockstep>
-                <bitrate>4000000</bitrate>
+              <use_sim_time>true</use_sim_time>
+              <lockstep>false</lockstep>
+              <bitrate>4000000</bitrate>
             </record_video>
-            </plugin>
+          </plugin>
 
-            <!-- Inspector -->
-            <plugin filename="ComponentInspector" name="Component inspector">
+          <!-- Inspector -->
+          <plugin filename="ComponentInspector" name="Component inspector">
             <gz-gui>
-                <property type="string" key="state">docked_collapsed</property>
+              <property type="string" key="state">docked_collapsed</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <!-- Entity tree -->
-            <plugin filename="EntityTree" name="Entity tree">
+          <!-- Entity tree -->
+          <plugin filename="EntityTree" name="Entity tree">
             <gz-gui>
-                <property type="string" key="state">docked_collapsed</property>
+              <property type="string" key="state">docked_collapsed</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
-            <!-- View angle -->
-            <plugin filename="ViewAngle" name="View angle">
+          <!-- View angle -->
+          <plugin filename="ViewAngle" name="View angle">
             <gz-gui>
-                <property type="string" key="state">docked_collapsed</property>
+              <property type="string" key="state">docked_collapsed</property>
             </gz-gui>
-            </plugin>
+          </plugin>
 
             <!-- KeyPublisher plugin-->
             <plugin filename="KeyPublisher" name="Key Publisher"/>
@@ -372,40 +361,32 @@
                     <visualize>true</visualize>
                     <topic>imu</topic>
                 </sensor>
-
-                <sensor name='gpu_lidar' type='gpu_lidar'>
-                    <pose relative_to='lidar_frame'>0 0 0.2 0 0 0</pose>
+                <sensor name='gpu_lidar' type='gpu_lidar'>"
+                    <pose relative_to='lidar_frame'>0 0 0 0 0 0</pose>
                     <topic>lidar</topic>
                     <update_rate>10</update_rate>
                     <ray>
                         <scan>
                             <horizontal>
-                                <samples>2000</samples>
-                                <resolution>1</resolution>
-                                <min_angle>-3.1415926536</min_angle>
-                                <max_angle> 3.1415926536</max_angle>
+                            <samples>640</samples>
+                            <resolution>1</resolution>
+                            <min_angle>-1.396263</min_angle>
+                            <max_angle>1.396263</max_angle>
                             </horizontal>
-
                             <vertical>
-                                <samples>10</samples>
-                                <resolution>1</resolution>
-                                <min_angle>-0.122173048</min_angle>
-                                <max_angle> 0.907571211</max_angle>
+                            <samples>1</samples>
+                            <resolution>0.01</resolution>
+                            <min_angle>0</min_angle>
+                            <max_angle>0</max_angle>
                             </vertical>
                         </scan>
-
-                        <range>
-                            <min>0.10</min>
-                            <max>10.0</max>
-                            <resolution>0.01</resolution>
-                        </range>
-                        <noise>
-                            <type>gaussian</type>
-                            <mean>0.0</mean>
-                            <stddev>0.02</stddev>
-                        </noise>
+                    <range>
+                        <min>0.08</min>
+                        <max>10.0</max>
+                        <resolution>0.01</resolution>
+                    </range>
                     </ray>
-                    <always_on>true</always_on>
+                    <always_on>1</always_on>
                     <visualize>true</visualize>
                 </sensor>
             </link>
@@ -558,8 +539,8 @@
 
             <!--diff drive plugin-->
             <plugin
-                filename="ignition-gazebo-diff-drive-system"
-                name="ignition::gazebo::systems::DiffDrive">
+                filename="gz-sim-diff-drive-system"
+                name="gz::sim::systems::DiffDrive">
                 <left_joint>left_wheel_joint</left_joint>
                 <right_joint>right_wheel_joint</right_joint>
                 <wheel_separation>1.2</wheel_separation>
@@ -569,8 +550,8 @@
             </plugin>
         </model>
 
-        <!--wall 1-->
-        <model name='wall_1'>
+        <!--wall-->
+        <model name='wall'>
             <static>true</static>
             <pose>5 0 0 0 0 0</pose><!--pose relative to the world-->
             <link name='box'>
@@ -612,8 +593,8 @@
                     </contact>
                 </sensor>
             </link>
-            <plugin filename="ignition-gazebo-touchplugin-system"
-                    name="ignition::gazebo::systems::TouchPlugin">
+            <plugin filename="gz-sim-touchplugin-system"
+                    name="gz::sim::systems::TouchPlugin">
                 <target>vehicle_blue</target>
                 <namespace>wall</namespace>
                 <time>0.001</time>
@@ -621,213 +602,54 @@
             </plugin>
         </model>
 
-        <model name='wall_2'>
-            <static>true</static>
-            <pose>-5 0 0 0 0 0</pose><!--pose relative to the world-->
-            <link name='box'>
-                <pose/>
-                <inertial> <!--inertial properties of the link mass, inertia matix-->
-                    <mass>1.14395</mass>
-                    <inertia>
-                        <ixx>9.532917</ixx>
-                        <ixy>0</ixy>
-                        <ixz>0</ixz>
-                        <iyy>0.023832</iyy>
-                        <iyz>0</iyz>
-                        <izz>9.556749</izz>
-                    </inertia>
-                </inertial>
-                <visual name='visual'>
-                    <geometry>
-                        <box>
-                            <size>0.5 10.0 2.0</size>
-                        </box>
-                    </geometry>
-                    <!--let's add color to our link-->
-                    <material>
-                        <ambient>0.0 0.0 1.0 1</ambient>
-                        <diffuse>0.0 0.0 1.0 1</diffuse>
-                        <specular>0.0 0.0 1.0 1</specular>
-                    </material>
-                </visual>
-                <collision name='collision'> <!--todo: describe why we need the collision-->
-                    <geometry>
-                        <box>
-                            <size>0.5 10.0 2.0</size>
-                        </box>
-                    </geometry>
-                </collision>
-                <sensor name='sensor_contact' type='contact'>
-                    <contact>
-                        <collision>collision</collision>
-                    </contact>
-                </sensor>
-            </link>
-            <plugin filename="ignition-gazebo-touchplugin-system"
-                    name="ignition::gazebo::systems::TouchPlugin">
-                <target>vehicle_blue</target>
-                <namespace>wall</namespace>
-                <time>0.001</time>
-                <enabled>true</enabled>
-            </plugin>
-        </model>
-
-        <model name='wall_3'>
-            <static>true</static>
-            <pose>0 5 0 0 0 0</pose><!--pose relative to the world-->
-            <link name='box'>
-                <pose/>
-                <inertial> <!--inertial properties of the link mass, inertia matix-->
-                    <mass>1.14395</mass>
-                    <inertia>
-                        <ixx>9.532917</ixx>
-                        <ixy>0</ixy>
-                        <ixz>0</ixz>
-                        <iyy>0.023832</iyy>
-                        <iyz>0</iyz>
-                        <izz>9.556749</izz>
-                    </inertia>
-                </inertial>
-                <visual name='visual'>
-                    <geometry>
-                        <box>
-                            <size>9.0 0.5 2.0</size>
-                        </box>
-                    </geometry>
-                    <!--let's add color to our link-->
-                    <material>
-                        <ambient>0.0 1.0 0.0 1</ambient>
-                        <diffuse>0.0 1.0 0.0 1</diffuse>
-                        <specular>0.0 1.0 0.0 1</specular>
-                    </material>
-                </visual>
-                <collision name='collision'> <!--todo: describe why we need the collision-->
-                    <geometry>
-                        <box>
-                            <size>9.0 0.5 2.0</size>
-                        </box>
-                    </geometry>
-                </collision>
-                <sensor name='sensor_contact' type='contact'>
-                    <contact>
-                        <collision>collision</collision>
-                    </contact>
-                </sensor>
-            </link>
-            <plugin filename="ignition-gazebo-touchplugin-system"
-                    name="ignition::gazebo::systems::TouchPlugin">
-                <target>vehicle_blue</target>
-                <namespace>wall</namespace>
-                <time>0.001</time>
-                <enabled>true</enabled>
-            </plugin>
-        </model>
-
-        <model name='wall_4'>
-            <static>true</static>
-            <pose>0 -5 0 0 0 0</pose><!--pose relative to the world-->
-            <link name='box'>
-                <pose/>
-                <inertial> <!--inertial properties of the link mass, inertia matix-->
-                    <mass>1.14395</mass>
-                    <inertia>
-                        <ixx>9.532917</ixx>
-                        <ixy>0</ixy>
-                        <ixz>0</ixz>
-                        <iyy>0.023832</iyy>
-                        <iyz>0</iyz>
-                        <izz>9.556749</izz>
-                    </inertia>
-                </inertial>
-                <visual name='visual'>
-                    <geometry>
-                        <box>
-                            <size>9.0 0.5 2.0</size>
-                        </box>
-                    </geometry>
-                    <!--let's add color to our link-->
-                    <material>
-                        <ambient>0.0 1.0 0.0 1</ambient>
-                        <diffuse>0.0 1.0 0.0 1</diffuse>
-                        <specular>0.0 1.0 0.0 1</specular>
-                    </material>
-                </visual>
-                <collision name='collision'> <!--todo: describe why we need the collision-->
-                    <geometry>
-                        <box>
-                            <size>9.0 0.5 2.0</size>
-                        </box>
-                    </geometry>
-                </collision>
-                <sensor name='sensor_contact' type='contact'>
-                    <contact>
-                        <collision>collision</collision>
-                    </contact>
-                </sensor>
-            </link>
-            <plugin filename="ignition-gazebo-touchplugin-system"
-                    name="ignition::gazebo::systems::TouchPlugin">
-                <target>vehicle_blue</target>
-                <namespace>wall</namespace>
-                <time>0.001</time>
-                <enabled>true</enabled>
-            </plugin>
-        </model>
-
-
-
-
+        <!-- Moving Left-->
+        <plugin filename="gz-sim-triggered-publisher-system"
+                name="gz::sim::systems::TriggeredPublisher">
+            <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777234</match>
+            </input>
+            <output type="gz.msgs.Twist" topic="/cmd_vel">
+                linear: {x: 0.0}, angular: {z: 0.5}
+            </output>
+        </plugin>
         <!-- Moving Forward-->
-        <plugin filename="ignition-gazebo-triggered-publisher-system"
-                name="ignition::gazebo::systems::TriggeredPublisher">
-            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+        <plugin filename="gz-sim-triggered-publisher-system"
+                name="gz::sim::systems::TriggeredPublisher">
+            <input type="gz.msgs.Int32" topic="/keyboard/keypress">
                 <match field="data">16777235</match>
             </input>
-            <output type="ignition.msgs.Twist" topic="/cmd_vel">
+            <output type="gz.msgs.Twist" topic="/cmd_vel">
                 linear: {x: 0.5}, angular: {z: 0.0}
             </output>
         </plugin>
-
+        <!-- Moving Right-->
+        <plugin filename="gz-sim-triggered-publisher-system"
+                name="gz::sim::systems::TriggeredPublisher">
+            <input type="gz.msgs.Int32" topic="/keyboard/keypress">
+                <match field="data">16777236</match>
+            </input>
+            <output type="gz.msgs.Twist" topic="/cmd_vel">
+                linear: {x: 0.0}, angular: {z: -0.5}
+            </output>
+        </plugin>
         <!-- Moving Backward-->
-        <plugin filename="ignition-gazebo-triggered-publisher-system"
-                name="ignition::gazebo::systems::TriggeredPublisher">
-            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
+        <plugin filename="gz-sim-triggered-publisher-system"
+                name="gz::sim::systems::TriggeredPublisher">
+            <input type="gz.msgs.Int32" topic="/keyboard/keypress">
                 <match field="data">16777237</match>
             </input>
-            <output type="ignition.msgs.Twist" topic="/cmd_vel">
+            <output type="gz.msgs.Twist" topic="/cmd_vel">
                 linear: {x: -0.5}, angular: {z: 0.0}
             </output>
         </plugin>
 
-        <!-- Rotating right-->
-        <plugin filename="ignition-gazebo-triggered-publisher-system"
-                name="ignition::gazebo::systems::TriggeredPublisher">
-            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
-                <match field="data">16777236</match>
-            </input>
-            <output type="ignition.msgs.Twist" topic="/cmd_vel">
-                linear: {x: 0.0}, angular: {z: -0.5}
-            </output>
-        </plugin>
-
-        <!--Rotating left-->
-        <plugin filename="ignition-gazebo-triggered-publisher-system"
-                name="ignition::gazebo::systems::TriggeredPublisher">
-            <input type="ignition.msgs.Int32" topic="/keyboard/keypress">
-                <match field="data">16777234</match>
-            </input>
-            <output type="ignition.msgs.Twist" topic="/cmd_vel">
-                linear: {x: 0.0}, angular: {z: 0.5}
-            </output>
-        </plugin>
-
         <!--stop when hit the wall-->
-        <plugin filename="ignition-gazebo-triggered-publisher-system"
-                name="ignition::gazebo::systems::TriggeredPublisher">
-            <input type="ignition.msgs.Boolean" topic="/wall/touched">
+        <plugin filename="gz-sim-triggered-publisher-system"
+                name="gz::sim::systems::TriggeredPublisher">
+            <input type="gz.msgs.Boolean" topic="/wall/touched">
                 <match>data: true</match>
             </input>
-            <output type="ignition.msgs.Twist" topic="/cmd_vel">
+            <output type="gz.msgs.Twist" topic="/cmd_vel">
                 linear: {x: 0.0}, angular: {z: 0.0}
             </output>
         </plugin>

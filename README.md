@@ -150,9 +150,9 @@ Below are the key LiDAR settings. Adjust to match your device.
 
 ## Reference
 ### Gazebo
-- [Gazebo sensors tutorial](https://gazebosim.org/docs/fortress/sensors/)
-- [Gazebo sensors tutorial code](https://github.com/gazebosim/docs/tree/master/fortress/tutorials/sensors)
-- [ros_gz](https://github.com/gazebosim/ros_gz?tab=readme-ov-file)
+- [Gazebo sensors tutorial](https://gazebosim.org/docs/harmonic/sensors/)
+- [Gazebo sensors tutorial code](https://github.com/gazebosim/docs/tree/master/harmonic/tutorials/sensors)
+- [ros_gz](https://github.com/gazebosim/ros_gz)
 
 ### Livox Mid-360
 - [Livox Mid-360 Specs](https://www.livoxtech.com/jp/mid-360/specs)
