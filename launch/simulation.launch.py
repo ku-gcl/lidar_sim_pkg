@@ -15,12 +15,12 @@ def generate_launch_description():
     
     # SetEnvironmentVariable('GZ_SIM_RESOURCE_PATH', resource_path),
     set_res_path = SetEnvironmentVariable(
-        name='IGN_GAZEBO_RESOURCE_PATH', 
+        name='GZ_SIM_RESOURCE_PATH', 
         value=PathJoinSubstitution([pkg_share, "worlds"])
     )
     
     gz_sim = ExecuteProcess(
-        cmd=["ign", "gazebo", world],
+        cmd=["gz", "sim", world],
         output="screen"
     )
     
