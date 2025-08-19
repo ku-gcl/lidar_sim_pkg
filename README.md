@@ -53,6 +53,7 @@ Then, run your gazebo simulation.
 After run gazebo simulation, execute command below
 
 ### simulation
+
 ```bash
 ros2 launch lidar_sim_pkg car_simulation.launch.py
 ```
