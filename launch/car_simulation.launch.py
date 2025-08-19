@@ -61,6 +61,16 @@ def generate_launch_description():
         output='screen',
     )
     
+    gz_tf_topic = '/model/vehicle_blue/tf'
+    tf_bridge = Node(
+        package='ros_gz_bridge',
+        executable='parameter_bridge',
+        name='ros_gz_bridge',
+        arguments=[f'{gz_tf_topic}@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'],
+        remappings=[(gz_tf_topic, "/tf")],
+        output='screen',
+    )
+    
     # tf2_ros = Node(
     #     package='tf2_ros',
     #     executable='static_transform_publisher',
@@ -77,5 +87,6 @@ def generate_launch_description():
         lidar_bridge,
         imu_bridge,
         odom_bridge,
+        tf_bridge,
         # tf2_ros,
     ])
