@@ -104,5 +104,6 @@ def generate_launch_description():
         imu_bridge,
         odom_bridge,
         tf_bridge,
+        rviz,
         # tf2_ros,
     ])
