@@ -2,7 +2,7 @@ from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
-    gz_topic = '/lidar'
+    gz_topic = '/lidar/points'
     return LaunchDescription([
         Node(
             package='ros_gz_bridge',
@@ -14,12 +14,12 @@ def generate_launch_description():
             ],
             output='screen',
         ),
-        Node(
-            package='tf2_ros',
-            executable='static_transform_publisher',
-            name='static_tf_laser',
-            # SDFの親リンク名は "link" なので、base_link ではなく link に合わせるのが安全
-            arguments=['0', '0', '0', '0', '0', '0', 'link', 'laser_link'],
-            output='screen',
-        ),
+        # Node(
+        #     package='tf2_ros',
+        #     executable='static_transform_publisher',
+        #     name='static_tf_laser',
+        #     # SDFの親リンク名は "link" なので、base_link ではなく link に合わせるのが安全
+        #     arguments=['0', '0', '0', '0', '0', '0', 'link', 'laser_link'],
+        #     output='screen',
+        # ),
     ])
