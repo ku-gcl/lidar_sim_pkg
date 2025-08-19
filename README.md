@@ -57,15 +57,12 @@ After run gazebo simulation, execute command below
 ros2 launch lidar_sim_pkg car_simulation.launch.py
 ```
 
-## Mid-360 
+## Useful command
 
 ```bash
-ros2 launch lidar_sim_pkg pc2_bridge.launch.py
-```
+gz topic -t /lidar/points --info
 
-```bash
-gz topic -t /world/helipad_lidar/model/wrscopter_lidar_0/link/mid360_link/sensor/lidar/scan/points --info
-ros2 run ros_gz_bridge parameter_bridge /world/helipad_lidar/model/wrscopter_lidar_0/link/mid360_link/sensor/lidar/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked
+ros2 run ros_gz_bridge parameter_bridge /lidar/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked
 ```
 
 
