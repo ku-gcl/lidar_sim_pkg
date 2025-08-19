@@ -12,7 +12,7 @@ find_package(std_msgs REQUIRED)
 # find_package(ros_gz_sim REQUIRED)
 # find_package(ros_gz_bridge REQUIRED)
 find_package(ignition-transport11 QUIET REQUIRED OPTIONAL_COMPONENTS log)
-set(IGN_TRSNSPORT_VER ${ignition-transport11_VERSION_MAJOR})
+set(IGN_TRANSPORT_VER ${ignition-transport11_VERSION_MAJOR})
 find_package(ignition-msgs8 QUIET)
 
 add_executable(lidar_node src/lidar_node.cpp)
@@ -26,7 +26,7 @@ ament_target_dependencies(
   "std_msgs"
 )
 target_link_libraries(lidar_node
-  ignition-transport${IGN_TRSNSPORT_VER}::core
+  ignition-transport${IGN_TRANSPORT_VER}::core
   ignition-msgs8::ignition-msgs8
 )
 
