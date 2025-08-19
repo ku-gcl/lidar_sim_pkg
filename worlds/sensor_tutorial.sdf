@@ -360,11 +360,11 @@
                     <update_rate>1</update_rate>
                     <visualize>true</visualize>
                     <topic>imu</topic>
-                    <gz_frame_id>base_link</gz_frame_id>
+                    <gz_frame_id>vehicle_blue/chassis</gz_frame_id>
                 </sensor>
                 <sensor name='gpu_lidar' type='gpu_lidar'>"
                     <pose relative_to='lidar_frame'>0 0 0.2 0 0 0</pose>
-                    <gz_frame_id>base_link</gz_frame_id>
+                    <gz_frame_id>vehicle_blue/chassis</gz_frame_id>
                     <topic>lidar</topic>
                     <update_rate>10</update_rate>
                     <ray>
