@@ -1,7 +1,8 @@
 # LiDAR simulation
 ## Preliminaries
+- Ubuntu 22.04
 - ROS 2 Humble
-- Gazebo Fortress (ignition)
+- Gazebo Harmonic
 
 
 ## YouTube Video
@@ -12,122 +13,55 @@
 ### Clone and build
 
 ```bash
+# Install dependencies
+sudo apt install -y ros-humble-actuator-msgs ros-humble-gps-msgs ros-humble-vision-msgs
+
+export GZ_VERSION=harmonic
+
 mkdir -p ~/ws_lidar/src
 cd ~/ws_lidar/src
 
-git clone https://github.com/ku-gcl/lidar_sim_pkg.git
+# Download needed software
+git clone https://github.com/gazebosim/ros_gz.git -b humble
+cd ~/ws_lidar
+rosdep install -r --from-paths src -i -y --rosdistro humble
 
+# Build and install into workspace
+source /opt/ros/humble/setup.bash
 cd ~/ws_lidar
 colcon build --symlink-install
 ```
 
-
-### simulation
-
-```bash
-source /opt/ros/humble/setup.bash
-source ~/ws_lidar/install/setup.bash
-
-ros2 launch lidar_sim_pkg simulation.launch.py
-```
-
-### Check topic
-
-<details>
-<summary>ign topic -l (see topic list)</summary>
+### Bridge gz gpu_lidar to ROS 2
 
 ```bash
-ign topic -l                # see topic list
----
-
-/clock
-/cmd_vel
-/gazebo/resource_paths
-/gui/camera/pose
-/gui/record_video/stats
-/imu
-/keyboard/keypress
-/lidar
-/lidar/points
-/model/vehicle_blue/odometry
-/model/vehicle_blue/tf
-/sensors/marker
-/stats
-/wall/touched
-/world/sensor_world/clock
-/world/sensor_world/dynamic_pose/info
-/world/sensor_world/model/wall/link/box/sensor/sensor_contact/contact
-/world/sensor_world/pose/info
-/world/sensor_world/scene/deletion
-/world/sensor_world/scene/info
-/world/sensor_world/state
-/world/sensor_world/stats
+cd ~/ws_lidar/src
+git clone https://github.com/ku-gcl/lidar_sim_pkg
+cd ~/ws_lidar
+export GZ_VERSION=harmonic && colcon build --symlink-install
 ```
-</details>
 
-<details>
-<summary>ign topic -e -t /lidar (see lidar topic data)</summary>
+### Run
 
 ```bash
-ign topic -e -t /lidar      # echo /lidar topic data
----
-
-header {
-  stamp {
-    sec: 165
-    nsec: 500000000
-  }
-  data {
-    key: "frame_id"
-    value: "vehicle_blue::chassis::gpu_lidar"
-  }
-  data {
-    key: "seq"
-    value: "1671"
-  }
-}
-frame: "vehicle_blue::chassis::gpu_lidar"
-world_pose {
-  position {
-    x: 0.8
-    z: 0.7
-  }
-  orientation {
-    w: 1
-  }
-}
-angle_min: -3.1415926536
-angle_max: 3.1415926536
-angle_step: 0.0031431642357178588
-range_min: 0.1
-range_max: 10
-count: 2000
-vertical_angle_min: -0.122173048
-vertical_angle_max: 0.907571211
-vertical_angle_step: 0.026403698948717951
-vertical_count: 40
-ranges: 3.1339066028594971
-ranges: 3.1846680641174316
-ranges: 3.1596453189849854
-ranges: 3.183290958404541
-ranges: 3.15217661857605
-ranges: 3.1883203983306885
-ranges: 3.1930842399597168
-ranges: 3.1721608638763428
-...
-
-intensities: 0
-intensities: 0
-intensities: 0
-intensities: 0
-intensities: 0
-intensities: 0
-intensities: 0
-intensities: 0
-intensities: 0
-...
+echo "source /opt/ros/${ROS_DISTRO}/setup.bash" >> ~/.bashrc
+echo "source ~/ws_lidar/install/setup.bash" >> ~/.bashrc
+source ~/.bashrc
 ```
-</details>
+
+Then, run your gazebo simulation. 
+After run gazebo simulation, execute command below
+
+```bash
+ros2 launch lidar_sim_pkg pc2_bridge.launch.py
+```
+
+```bash
+gz topic -t /world/helipad_lidar/model/wrscopter_lidar_0/link/mid360_link/sensor/lidar/scan/points --info
+ros2 run ros_gz_bridge parameter_bridge /world/helipad_lidar/model/wrscopter_lidar_0/link/mid360_link/sensor/lidar/scan/points@sensor_msgs/msg/PointCloud2@gz.msgs.PointCloudPacked
+```
+
+
 
 
 ## Livox Mid-360 Specs
