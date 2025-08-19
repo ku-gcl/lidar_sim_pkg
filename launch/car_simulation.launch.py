@@ -57,7 +57,7 @@ def generate_launch_description():
         executable='parameter_bridge',
         name='ros_gz_bridge',
         arguments=[f'{gz_odom_topic}@nav_msgs/msg/Odometry[gz.msgs.Odometry'],
-        remappings=[(gz_odom_topic, "/odom")],
+        remappings=[(gz_odom_topic, "/vehicle_blue/odom")],
         output='screen',
     )
     
